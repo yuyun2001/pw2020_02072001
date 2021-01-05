@@ -20,3 +20,19 @@ function query($query)
 
   return $rows;
 }
+
+function tambah($data)
+{
+  $conn = koneksi();
+
+  $nama = htmlspecialchars($data['nama']);
+  $alamat = htmlspecialchars($data['alamat']);
+  $jekel = htmlspecialchars($data['jekel']);
+  $pekerjaan = htmlspecialchars($data['pekerjaan']);
+
+  $query = "INSERT INTO pelanggan VALUES (null,'$nama','$alamat','$jekel','$pekerjaan')";
+
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
